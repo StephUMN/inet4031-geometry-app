@@ -28,7 +28,7 @@ def mainForm():
       print("Selection was: ", sphere, cylinder) #prints to command line for trouble shooting
       if sphere == "on":
          print("User selected sphere") #prints to command line for trouble shooting
-         #something needs to go here
+         return redirect(url_for('sphereForm'))
       elif cylinder == "on":
          print("User selected cylinder") #prints to command line for trouble shooting
          return redirect(url_for('cylinderForm'))
@@ -55,9 +55,9 @@ def sphereForm():
        # getting input with name = fname in HTML form
        radius = request.form.get("rad")
        # getting input with name = lname in HTML form 
-       height = request.form.get("hgt") 
-       vol = sphere.volume(int(radius), int(height))
-       return "User entered: Radius "+ str(radius) + " and Height: " + str(height) + ". <p>The Volume is: " + str(vol)
+      #  height = request.form.get("hgt") 
+       vol = sphere.volume(int(radius))
+       return "User entered: Radius "+ str(radius) + ". <p>The Volume is: " + str(vol)
        #where is the sphere.html file?
    return render_template("sphere.html")
 
@@ -65,3 +65,4 @@ def sphereForm():
   
 if __name__=='__main__':   #more flask plumbing so the environment starts correctly
    app.run(host='0.0.0.0')
+   
